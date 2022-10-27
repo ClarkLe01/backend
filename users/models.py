@@ -61,7 +61,7 @@ class User(AbstractUser, PermissionsMixin):
         return self.first_name
 
     class Meta:
-        db_table = 'user'
+        db_table = 'User'
 
 
 class ProfileFeedItem(models.Model):
@@ -76,3 +76,6 @@ class ProfileFeedItem(models.Model):
     def __str__(self):
         """Return the model as a string"""
         return self.status_text
+
+    class Meta:
+        db_table = 'ProfileFeedItem'
