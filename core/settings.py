@@ -62,7 +62,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 ROOT_URLCONF = 'core.urls'
-TEMPLATE_URL = os.path.join(BASE_DIR, 'templates')
+TEMPLATE_URL = os.path.join(BASE_DIR, '../templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

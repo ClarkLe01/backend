@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User, ProfileFeedItem
 from django.contrib.auth.models import Group
 
 
@@ -11,6 +11,7 @@ class GroupSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     """Serializes a user profile object"""
+
     class Meta:
         model = User
         fields = ('id', 'first_name', 'last_name', 'email', 'password')
@@ -34,3 +35,14 @@ class UserSerializer(serializers.ModelSerializer):
             password = validated_data.pop('password')
             instance.set_password(password)
         return instance
+
+
+class ProfileFeedItemSerializer(serializers.ModelSerializer):
+    """Serializer profile feed items"""
+
+    class Meta:
+        model = ProfileFeedItem
+        fields = ('id', 'user_profile', 'status_text', 'created_on')
+        extra_kwargs = {
+            'user_profile': {'read_only': True}
+        }
